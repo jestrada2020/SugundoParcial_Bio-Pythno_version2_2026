@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segundo Parcial — Shiny for Python</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       PANTALLA 1: LOGIN
+  ══════════════════════════════════════════════════════ -->
+  <div id="screen-login" class="screen-login">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo">
+          <!-- Logo Shiny for Python -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" width="96" height="96" aria-label="Shiny logo">
+            <circle cx="55" cy="55" r="50" fill="#2196F3" opacity="0.15"/>
+            <path d="M55 10 C36 10 28 18 28 30 L28 42 54 42 54 46
+                     L22 46 C10 46 10 62 22 66 L22 74 C22 88 34 96 54 96
+                     C58 96 62 95 66 94 L66 82 54 82 C44 82 38 76 38 68
+                     L38 46 54 46 Z" fill="#3776AB"/>
+            <circle cx="38" cy="30" r="4" fill="white"/>
+            <circle cx="39" cy="30" r="2" fill="#1a1a2e"/>
+            <path d="M56 100 C74 100 82 92 82 80 L82 68 56 68 56 64
+                     L88 64 C100 64 100 48 88 44 L88 36 C88 22 76 14 56 14
+                     C52 14 48 15 44 16 L44 28 56 28 C66 28 72 34 72 42
+                     L72 64 56 64 Z" fill="#FFD43B"/>
+            <circle cx="72" cy="80" r="4" fill="white"/>
+            <circle cx="73" cy="80" r="2" fill="#1a1a2e"/>
+          </svg>
+        </div>
+        <h1>Shiny for Python</h1>
+        <p class="subtitle">Segundo Parcial — Aplicaciones Interactivas</p>
+        <p class="subtitle">30 Preguntas — 50 Puntos</p>
+      </div>
+
+      <form id="login-form" class="login-form" novalidate>
+        <div class="field">
+          <label>C.C. / TID *</label>
+          <input required name="cedula" type="text" placeholder="Número de identificación" autocomplete="off">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Nombre *</label>
+            <input required name="nombre" type="text" placeholder="Juan">
+          </div>
+          <div class="field">
+            <label>Apellidos *</label>
+            <input required name="apellidos" type="text" placeholder="Pérez">
+          </div>
+        </div>
+        <div class="field">
+          <label>Programa *</label>
+          <input required name="programa" type="text" placeholder="Ingeniería de Sistemas">
+        </div>
+        <div class="field">
+          <label>Correo *</label>
+          <input required name="email" type="email" placeholder="juan@email.com">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Iniciar Evaluación →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PANTALLA 2: QUIZ
+  ══════════════════════════════════════════════════════ -->
+  <div id="screen-quiz" style="display:none">
+
+    <!-- Header fijo -->
+    <header class="quiz-header">
+      <div class="header-left">
+        <span class="header-title">Segundo Parcial — Shiny for Python</span>
+        <span class="header-user" id="header-user"></span>
+      </div>
+      <div class="header-right">
+        <span class="progress-label" id="progress-label">Verificadas: 0 / 30</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cuerpo: preguntas + sidebar -->
+    <div class="quiz-body">
+
+      <!-- Columna principal: todas las preguntas -->
+      <div class="questions-col">
+
+        <!-- Instrucciones -->
+        <div class="instructions-card">
+          <h3>Instrucciones</h3>
+          <ul>
+            <li>Haz clic en los espacios <span class="blank-sample">[...]</span> y escribe la respuesta correcta.</li>
+            <li>Si el mismo espacio aparece repetido, debe tener la misma respuesta en todas las ocurrencias.</li>
+            <li>Usa <strong>"Verificar Respuesta"</strong> en cada pregunta para ver retroalimentación.</li>
+            <li>Al terminar, haz clic en <strong>"Calcular Nota Final"</strong>.</li>
+          </ul>
+        </div>
+
+        <!-- Contenedor dinámico de preguntas -->
+        <div id="questions-container"></div>
+
+        <!-- Botón final -->
+        <div class="final-btn-wrap">
+          <button class="btn btn-success btn-lg" onclick="calculateFinalGrade()">
+            Calcular Nota Final ✓
+          </button>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results" style="display:none" class="results-card">
+          <h2>Resultados de la Evaluación</h2>
+          <div id="results-details"></div>
+          <div id="form-notification" class="form-notification"></div>
+          <div id="score-display" class="score-display"></div>
+          <button class="btn btn-secondary" style="margin-top:1.5rem;width:100%" onclick="restartQuiz()">
+            ↺ Nueva Evaluación
+          </button>
+        </div>
+
+      </div><!-- /questions-col -->
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3>Secciones</h3>
+        <div id="sidebar-sections"></div>
+        <div class="sidebar-total">
+          <span>Total verificadas</span>
+          <strong id="sidebar-done">0 / 30</strong>
+        </div>
+      </aside>
+
+    </div><!-- /quiz-body -->
+  </div><!-- /screen-quiz -->
+
+  <script src="js/sheets-integration.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/question-data.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

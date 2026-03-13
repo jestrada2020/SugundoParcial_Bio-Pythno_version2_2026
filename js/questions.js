@@ -1,0 +1,41 @@
+const correctAnswers = {
+          q1: ["shiny", "numpy", "array", "9"],
+          q2: ["App", "numpy", "len", "analizar_elemento"],
+          q3: ["ui", "[", "lista_frutas", "output_text"],
+          q4: ["ui", "if", "page_fluid", "clasificar_numero"],
+          q5: ["tuple", "value", "text", "int"],
+          q6: ["shiny", "<", "elif", "output_text"],
+          q7: ["array", "list", "+", "tolist"],
+          q10: ["dict", "if", "list", "obtener_info_estudiante"],
+          q11: [">", "<", "&", "len"],
+          q12: ["App", "sum", "value", "output_text"],
+          q13: ["[", "choices", "int", "productos"],
+          q14: ["ui", "if", "else", "output_text"],
+          q16: ["dict", "if", "sum", "max"],
+          q18: ["shiny", "if", "else", "output_text"],
+          q20: ["render", "and", "if", "output_text"],
+          q21: ["mean", "std", "max", "if"],
+          q22: ["np", "*", "[0]", "if"],
+          q24: ["App", "if", "else", "output_text"],
+          q25: ["/", "mean", ">", "len"],
+          q29: ["ui", "if", "elif", "output_text"],
+          q30: ["tolist", "+", "sum", ""],
+          q32: ["reshape", "fila_idx", ":", "if"],
+          q35: ["sqrt", "**", "**", ""],
+          q37: ["/", ""],
+          q38: ["0"],
+          q39: ["//", "%"],
+          q42: ["*", "pi", ""],
+          q43: ["*", "*", "**", ""],
+          q47: ["[0]", "len", "in", "isupper"],
+          q49: ["not"]
+        };
+        
+        const pointValues = {
+          q1: 1, q2: 1, q3: 1, q4: 1, q5: 2,
+          q6: 2, q7: 2, q10: 2, q11: 2, q12: 2,
+          q13: 2, q14: 2, q16: 2, q18: 2, q20: 2,
+          q21: 2, q22: 2, q24: 2, q25: 2, q29: 2,
+          q30: 2, q32: 2, q35: 2, q37: 1, q38: 1,
+          q39: 2, q42: 1, q43: 1, q47: 1, q49: 1
+        };
